@@ -1,4 +1,4 @@
-# Kwanil's Setting Mac Development
+# Kwanil's Setting Mac Development: SettingMyMac_DevelopmentTools
 
 This is shell program that can test:
 
