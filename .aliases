@@ -1,0 +1,50 @@
+
+
+
+
+
+
+
+
+cdf() {
+		target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target     of front Finder window as text)'`
+        if [ "$target" != "" ]; then
+                cd "$target"; pwd
+        else
+                echo 'No Finder window found' >&2
+        fi
+}
+
+cdd() {
+	local needle=$(echo "$*" | sed -E 's/ +/.*/g')
+	cd "`find . -type d -macdepth 3 | grep -Ei "${needle}[^/]*$" | fzf -s 20 -1 -0 -q "$1"`"
+}
+
+alias home='cd ~/'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias rf='rm -rf'
+alias h='history'
+alias a='ack-grep'
+alias c='clear'
+
+
+alias f='open -a Finder ./'
+
+alias ucssh='ssh rla6100@pc20.cs.ucdavis.edu'
+alias ucdtp='sftp rla6100@pc21.cs.ucdavis.edu'
+alias speedtest='speedtest-cli'
+alias cat='ccat'
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"
+
+
+
+
+
+
+
